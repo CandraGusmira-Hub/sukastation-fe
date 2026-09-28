@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Sora", system-ui, sans-serif;
+  --color-ink-950: #05060B;
+  --color-ink-900: #0A0C16;
+  --color-ink-800: #0D1020;
+  --color-ink-700: #141833;
+  --color-line: #1E2438;
+}
+
+body {
+  overflow-x: hidden;
+}
