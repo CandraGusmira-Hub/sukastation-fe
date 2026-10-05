@@ -13,7 +13,7 @@ const TIME_SLOTS = [
 const BOOKED_SLOTS = ["11:00", "16:00", "21:00"];
 
 // Ganti dengan nomor WhatsApp admin kamu (format internasional, tanpa "+" atau "0" di depan).
-const WHATSAPP_NUMBER = "6283110653062";
+const WHATSAPP_NUMBER = "6283123456789"; // contoh: 6281234567890
 
 // Taruh gambar QRIS statis usaha kamu (hasil export dari aplikasi bank/e-wallet)
 // di folder public dengan nama file ini, misalnya: public/qris.png
