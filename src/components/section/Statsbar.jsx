@@ -1,4 +1,10 @@
-import { IconGamepad, IconLibrary, IconClock, IconVip, IconStar } from "../ui/Icons";
+import {
+  IconGamepad,
+  IconLibrary,
+  IconClock,
+  IconVip,
+  IconStar,
+} from "../ui/Icons";
 
 const stats = [
   { icon: IconGamepad, value: "PS4 & PS5", label: "Tersedia" },
@@ -11,42 +17,53 @@ const stats = [
 export default function StatsBar() {
   return (
     <section className="relative overflow-hidden bg-ink-950">
-      {/* Tekstur grid tipis ala layar HUD game */}
+      {/* Grid background */}
       <div className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,#facc15_1px,transparent_1px),linear-gradient(to_bottom,#facc15_1px,transparent_1px)] [background-size:40px_40px]" />
 
-      {/* Glow kuning lembut di tengah atas */}
+      {/* Glow */}
       <div className="pointer-events-none absolute left-1/2 top-0 h-32 w-2/3 -translate-x-1/2 bg-yellow-400/10 blur-3xl" />
 
-      {/* Garis neon atas & bawah */}
+      {/* Top & bottom line */}
       <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-yellow-400 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-yellow-400/50 to-transparent" />
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-2 gap-4 px-6 py-10 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="relative mx-auto grid max-w-7xl grid-cols-2 gap-2.5 px-4 py-6 sm:gap-4 sm:px-6 sm:py-8 lg:grid-cols-5 lg:py-10">
         {stats.map(({ icon: Icon, value, label }, i) => (
           <div
             key={label}
-            className={`group relative flex items-center gap-4 rounded-sm border border-line bg-ink-900/70 p-4 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-500/15 ${
-              i === stats.length - 1 ? "col-span-2 sm:col-span-1" : ""
+            className={`group relative flex min-w-0 items-center gap-3 rounded-sm border border-line bg-ink-900/70 p-3 backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-yellow-400/50 hover:shadow-lg hover:shadow-yellow-500/15 sm:gap-4 sm:p-4 ${
+              i === stats.length - 1 ? "col-span-2 lg:col-span-1" : ""
             }`}
           >
-            {/* Corner bracket ala HUD */}
-            <span className="absolute left-0 top-0 h-3 w-3 border-l-2 border-t-2 border-yellow-400" />
-            <span className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-yellow-400" />
+            {/* Corner bracket */}
+            <span className="absolute left-0 top-0 h-2.5 w-2.5 border-l-2 border-t-2 border-yellow-400 sm:h-3 sm:w-3" />
+            <span className="absolute bottom-0 right-0 h-2.5 w-2.5 border-b-2 border-r-2 border-yellow-400 sm:h-3 sm:w-3" />
 
-            {/* Nomor slot */}
-            <span className="absolute right-3 top-2 font-display text-[10px] font-bold text-yellow-400/40">
+            {/* Number */}
+            <span className="absolute right-2 top-1.5 font-display text-[8px] font-bold text-yellow-400/40 sm:right-3 sm:top-2 sm:text-[10px]">
               0{i + 1}
             </span>
 
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-yellow-400/10 text-yellow-400 ring-1 ring-yellow-400/30 transition duration-300 group-hover:bg-yellow-400 group-hover:text-ink-950 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.5)]">
-              <Icon className="h-6 w-6" />
+            {/* Icon */}
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-yellow-400/10 text-yellow-400 ring-1 ring-yellow-400/30 transition duration-300 group-hover:bg-yellow-400 group-hover:text-ink-950 group-hover:shadow-[0_0_20px_rgba(250,204,21,0.5)] sm:h-12 sm:w-12">
+              <Icon className="h-4 w-4 sm:h-6 sm:w-6" />
             </div>
 
+            {/* Text */}
             <div className="min-w-0">
-              <p className="font-display text-xl font-bold leading-none text-white transition-colors group-hover:text-yellow-300">
-                {value}
+              <p className="flex items-baseline font-display text-base font-bold leading-tight text-white transition-colors group-hover:text-yellow-300 sm:text-xl">
+                <span className="truncate">{value}</span>
+
+                {i === stats.length - 1 && (
+                  <span className="ml-1 shrink-0 text-xs font-normal text-yellow-400/50 sm:text-sm">
+                    /5
+                  </span>
+                )}
               </p>
-              <p className="mt-1.5 text-[11px] font-medium uppercase tracking-wider text-slate-400">{label}</p>
+
+              <p className="mt-1 truncate text-[9px] font-medium uppercase tracking-wide text-slate-400 sm:mt-1.5 sm:text-[11px] sm:tracking-wider">
+                {label}
+              </p>
             </div>
           </div>
         ))}
